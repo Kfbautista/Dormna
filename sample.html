@@ -1,0 +1,34 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search of Accomodations</title>
+    <link rel="stylesheet" href="styles.css">
+
+    
+</head>
+
+<body>
+
+
+<div class="property-details">
+    <img src="${propertyImage}" alt="Property Image" class="property-image-full">
+    <div class="property-info">
+      <h2>${propertyName}</h2>
+      <p>Address: ${propertyAddress}</p>
+      <p>Type: <span>${propertyType}</span></p>
+      <p>Price: <span class="price">₱${propertyPrice}/Month</span></p>
+      <p>Facebook: ${propertyFb}</p>
+      <p>Contact: ${propertyContactName}, ${propertyContactNum}</p>
+      <p>Slots Available: ${propertySlots}</p>
+      <p>Gender: ${propertyGender}</p>
+      <p>Description: ${propertyDescription}</p>
+      <button class="field_btn" name="submit" onclick="location.href='#ResultSearch';">Back</button>
+    </div>
+  </div>`;
+
+</body>
+</html>

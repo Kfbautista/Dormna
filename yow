@@ -1,0 +1,52 @@
+<?php
+$mysqli = require_once "database.php";
+
+$query = "SELECT * FROM `property-info`";
+$result = $mysqli->query($query);
+
+$properties = [];
+if ($result) {
+    while ($row = $result->fetch_assoc()) {
+        $properties[] = $row;
+    }
+}
+
+$mysqli->close();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Properties - DormNa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<section class="properties">
+    <div class="container">
+        <h1 class="title">List Of Properties</h1>
+        <div class="properties-grid" id="propertiesGrid">
+            <?php foreach ($properties as $property): ?>
+                <div class="property-card">
+                    <img src="assets/<?= htmlspecialchars($property['Pimage']) ?>" alt="Property Image" class="property-image">
+                    <div class="property-details">
+                        <h2 class="property-address"><?= htmlspecialchars($property['PAddress']) ?></h2>
+                        <p class="property-type"><?= htmlspecialchars($property['PAcc-type']) ?></p>
+                        <p class="property-price">₱<?= htmlspecialchars($property['Pprice']) ?>/Month</p>
+                        <p class="property-slots">Slots Available: <?= htmlspecialchars($property['PNum-slot-avail']) ?></p>
+                        <div class="property-contact">
+                            <p>Contact: <?= htmlspecialchars($property['Pcontact-name']) ?>, <?= htmlspecialchars($property['Pcontact-num']) ?></p>
+                        </div>
+                        <p class="property-gender">Gender: <?= htmlspecialchars($property['PGender']) ?></p>
+                        <p class="property-description"><?= htmlspecialchars($property['PDscrpt']) ?></p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
